@@ -1,18 +1,34 @@
 import { useEffect, useState } from "react";
-import { getDatabase, ref, set } from "firebase/database";
+import { getDatabase, ref, set, push, onValue } from "firebase/database";
 import "./App.css";
 function App() {
   const db = getDatabase();
 
-  // all state
   const [todoInput, settodoInput] = useState("");
+  const [todoAllData, settodoAllData] = useState([]);
 
-  //HandleInout function
-  const HandleInout = (e) => {
+  //GET data from database
+
+  useEffect(() => {
+    const tododbRef = ref(db, "todo/");
+    onValue(tododbRef, (snapshot) => {
+      const allDataArr = [];
+      snapshot.forEach((item) => {
+        allDataArr.push({
+          todoId: item.key,
+          todoItem: item.val(),
+        });
+      });
+      settodoAllData(allDataArr);
+    });
+  });
+  console.log(todoAllData);
+  //HandleAdd function
+  const HandleAdd = (e) => {
     e.preventDefault();
-    if ((todoInput |= "")) {
+    if (todoInput !== "") {
       const dbinfo = ref(db, "todo/");
-      set(dbinfo, {
+      set(push(dbinfo), {
         todoItem: todoInput,
       })
         .then(() => {
@@ -21,16 +37,23 @@ function App() {
         .catch((err) => {
           console.log(err);
         });
+    } else {
+      console.log("input faka");
     }
   };
 
-  console.log(todoInput);
   return (
     <>
       <div className="todobody">
         <form>
-          <input type="text" className="inputfield" onChange={HandleInout} />
-          <button className="addbtn">Add</button>
+          <input
+            type="text"
+            className="inputfield"
+            onChange={(e) => settodoInput(e.target.value)}
+          />
+          <button className="addbtn" onClick={HandleAdd}>
+            Add
+          </button>
         </form>
       </div>
     </>
