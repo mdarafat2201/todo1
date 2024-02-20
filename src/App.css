@@ -1,0 +1,14 @@
+.todobody {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+}
+.inputfield {
+  margin-right: 10px;
+  padding: 10px 30px;
+}
+.addbtn {
+  padding: 10px 20px;
+}
