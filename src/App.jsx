@@ -55,6 +55,19 @@ function App() {
             Add
           </button>
         </form>
+        <div className="todoitembox">
+          <ul className="itemParent">
+            {todoAllData.map((item) => (
+              <li className="todoitemforcss">
+                <div className="todoAllItem">
+                  <button className="edit">Edit</button>
+                  <span className="todoSpan">{item.todoItem.todoItem}</span>
+                  <button className="delete">delete</button>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
     </>
   );

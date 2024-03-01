@@ -1,3 +1,16 @@
+* {
+  margin: 0;
+  padding: 0;
+  outline: 0;
+  box-sizing: border-box;
+}
+ul,
+ol,
+li {
+  margin: 0;
+  padding: 0;
+}
+
 .todobody {
   display: flex;
   justify-content: center;
@@ -6,9 +19,57 @@
   height: 100vh;
 }
 .inputfield {
+  width: 420px;
   margin-right: 10px;
   padding: 10px 30px;
 }
 .addbtn {
   padding: 10px 20px;
+}
+.todoitembox {
+  max-width: 500px;
+  height: 500px;
+  background: #323241;
+  overflow: scroll;
+  margin-top: 40px;
+  overflow-x: hidden;
+}
+.itemParent {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+.todoitemforcss {
+  list-style: none;
+  background: #9c505089;
+  padding: 10px 200px;
+  margin: 10px 0;
+  text-align: center;
+  color: #fff;
+}
+.todoAllItem {
+  display: flex;
+  align-items: center;
+  column-gap: 20px;
+}
+.edit {
+  padding: 10px 20px;
+  background: greenyellow;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.todoSpan {
+  width: 250px;
+  white-space: pre-line;
+  word-break: break-all;
+  background: #000;
+}
+.delete {
+  padding: 10px 20px;
+  background: red;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
 }
