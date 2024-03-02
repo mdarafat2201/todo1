@@ -8,6 +8,7 @@ import {
   remove,
 } from "firebase/database";
 import "./App.css";
+import Modal from "react-modal";
 function App() {
   const db = getDatabase();
 
